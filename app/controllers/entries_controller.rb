@@ -1,17 +1,10 @@
-module Api
 class EntriesController < ApplicationController
-  before_action :set_entry, only: [:show, :edit, :update, :destroy], raise: false
-  skip_before_action :authenticate_user!, only: [:create], raise: false
-  respond_to :json
-  include RenderHelper
+  before_action :set_entry, only: [:show, :update, :destroy], raise: false
+
   # GET /entries
   # GET /entries.json
   def index
     @entries = Entry.all
-  end
-  def new
-    @parking.present?
-    render_default_format(@parking, true, 20 )
   end
 
   # GET /entries/1
@@ -57,5 +50,4 @@ class EntriesController < ApplicationController
     def entry_params
       params.require(:entry).permit(:entry_time, :exit_time, :total_time, :price, :vehicle_id, :rate_id, :parking_id)
     end
-end
 end

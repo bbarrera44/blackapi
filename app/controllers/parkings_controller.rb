@@ -1,9 +1,7 @@
 module Api
 class  ParkingsController < ApplicationController
-  before_action :set_parking, only: [:show, :update, :destroy], raise: false
-  skip_before_action :authenticate_user!, only: [:create], raise: false
-  respond_to :json
-  include RenderHelper
+  before_action :set_parking, only: [:show, :update, :destroy]
+
   # GET /parkings
   # GET /parkings.json
   def index
@@ -51,7 +49,7 @@ class  ParkingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def parking_params
-      params.permit(:name, :adress, :phone)
+      params.require(:parking).permit(:name, :adress, :phone)
     end
 end
 end

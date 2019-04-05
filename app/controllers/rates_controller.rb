@@ -1,9 +1,6 @@
-module Api
 class RatesController < ApplicationController
-  before_action :set_rate, only: [:show, :edit, :update, :destroy], raise: false
-  skip_before_action :authenticate_user!, only: [:create], raise: false
-  respond_to :json
-  include RenderHelper
+  before_action :set_rate, only: [:show, :update, :destroy]
+
   # GET /rates
   # GET /rates.json
   def index
@@ -53,5 +50,4 @@ class RatesController < ApplicationController
     def rate_params
       params.require(:rate).permit(:name, :value, :date_begin, :date_end)
     end
-end
 end

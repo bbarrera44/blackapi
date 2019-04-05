@@ -10,4 +10,3 @@ class ParkingController < ApplicationController
 end
 end
 
-

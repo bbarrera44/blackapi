@@ -1,9 +1,6 @@
-module Api
 class VehiclesController < ApplicationController
-  before_action :set_vehicle, only: [:show, :edit, :update, :destroy], raise:false
-  skip_before_action :authenticate_user!, only: [:create], raise: false
-  respond_to :json
-  include RenderHelper
+  before_action :set_vehicle, only: [:show, :update, :destroy]
+
   # GET /vehicles
   # GET /vehicles.json
   def index
@@ -53,5 +50,4 @@ class VehiclesController < ApplicationController
     def vehicle_params
       params.require(:vehicle).permit(:plate, :parking_id)
     end
-end
 end
